@@ -1,0 +1,41 @@
+<ROOT>
+<!-- CONFIG PARAMETERS -->
+	<DIVICE_WINDOW_NAME></DIVICE_WINDOW_NAME>
+	<WINDOW_REFRESH></WINDOW_REFRESH>
+	<LOG_LEVEL></LOG_LEVEL>
+<!--  MACRO CONFIG -->
+<MACRO>
+<ROUTIENE_NAME>
+
+</ROUTIENE_NAME>
+
+</MACRO>
+
+	<ROUTINES>
+		<ROUTINE>
+			<NAME></NAME>
+			<STEP sequence="0">
+				<VALIDATION>
+					<TYPE>
+					</TYPE>
+					<TIME_OUT>
+					</TIME_OUT>
+				</VALIDATION>
+				<ACTION_PASS>
+					<NAME></NAME>
+				</ACTION_PASS>
+				<ACTION_FAIL>
+					<NAME></NAME>
+				</ACTION_FAIL>
+			</STEP>
+			<STEP sequence="1">
+				<ACTION_PASS>
+					<NAME></NAME>
+				</ACTION_PASS>
+				<ACTION_FAIL>
+					<NAME></NAME>
+				</ACTION_FAIL>
+			</STEP>
+		</ROUTINE>
+	</ROUTINES>
+</ROOT>
