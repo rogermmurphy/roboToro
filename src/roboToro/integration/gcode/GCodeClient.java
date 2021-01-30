@@ -26,7 +26,7 @@ public class GCodeClient implements Closeable{
     }
 
     public String login(String password, String clientName, String clientVersion) throws IOException {
-        String command = String.format("hello %s %s %s", password, clientName, clientVersion);
+        String command = String.format("delta %s %s %s", password, clientName, clientVersion);
         String loginResponse = sendCommand(command);
         if(loginResponse==null || loginResponse.startsWith("HELLO NAK")){
             throw new IllegalArgumentException("Invalid password");

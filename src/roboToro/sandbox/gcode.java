@@ -9,9 +9,10 @@ public class gcode {
 
   public static void main(String[] args) throws Exception {
 
-      String hostname = "beaglebone.local";
+      String hostname = "192.168.1.86";
 
-      int port = 5007;
+      int port = 8844;
+      System.out.println("testing");
       try (GCodeClient gcodeclient = new GCodeClient(hostname, port)) {
           System.out.println(gcodeclient.login("emc", "jvm", "1.0"));
           gcodeclient.sendCommand("set mode manual");
@@ -32,7 +33,10 @@ public class gcode {
 
           gcodeclient.sendCommand("set mdi g0 x5 y2");
 
+      }catch(Exception ex) {
+    	  ex.printStackTrace();
       }
+      System.out.println("end");
 
   }
 
