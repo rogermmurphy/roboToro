@@ -1,6 +1,9 @@
 package roboToro.game.tbs2020;
 
 import java.io.StringReader;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -87,6 +90,11 @@ public class FixedUtil {
 		// Robot robot = new Robot();
 
 	}
+	
+    public static double round1(double input, int scale) {
+        BigDecimal bigDecimal = new BigDecimal(input).setScale(scale, RoundingMode.HALF_EVEN);
+        return bigDecimal.doubleValue();
+    }
 
 	public void setScreenCapture() {
 

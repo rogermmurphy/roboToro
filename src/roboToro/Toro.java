@@ -1,4 +1,4 @@
-/**
+u/**
  * 
  */
 package roboToro;
@@ -24,6 +24,7 @@ import com.sun.jna.platform.win32.WinDef.HWND;
 
 import roboToro.Main.WindowInfo;
 import roboToro.game.Game;
+import roboToro.game.tbs2020.FixedUtil;
 import roboToro.macro.Macro;
 import roboToro.util.ToroUtils;
 
@@ -117,6 +118,9 @@ public class Toro {
 		//hWnd = User32.INSTANCE.FindWindow(null, windowName);
 		//this.gameWindowInfo = ToroUtils.getWindowInfo(hWnd);
 	//	toroUtils = new ToroUtils(windowName);
+		Toro.ACTUAL_PIXEL_WIDTH = FixedUtil.round1((Toro.DIVICE_HEIGTH_MM / Toro.MAX_HEIGHT_PIXEL),2);
+		
+		
 		dbFactory = DocumentBuilderFactory.newInstance();
 		dBuilder = dbFactory.newDocumentBuilder();
 		doc = dBuilder.newDocument();
