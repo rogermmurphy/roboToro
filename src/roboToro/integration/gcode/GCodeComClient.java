@@ -66,7 +66,7 @@ public class GCodeComClient {
 		byte[] writeBuffer = (s + "\n\r").getBytes();
 		int numRead;
 		byte[] readBuffer;
-		readBuffer = new byte[comPort.bytesAvailable()];
+		//readBuffer = new byte[comPort.bytesAvailable()];
 		
 		try {
 			comPort.writeBytes(writeBuffer, (long) writeBuffer.length);
@@ -77,8 +77,7 @@ public class GCodeComClient {
 			numRead = comPort.readBytes(readBuffer, readBuffer.length);
 			System.out.println("Read " + numRead + " bytes." + new String(readBuffer, StandardCharsets.US_ASCII));
 			// writeBuffer = "G28\n\r".getBytes();
-
-			numRead = comPort.readBytes(readBuffer, readBuffer.length);
+			//numRead = comPort.readBytes(readBuffer, readBuffer.length);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
