@@ -140,6 +140,8 @@ public class Step {
 		// TODO Auto-generated method stub
 		if(this.Validate(PhonePanel.image) == 0) {
 			System.out.println("Execution True Step: " + this.stepName);
+			//Toro.comClient.sendCommand(null)
+			passAction.sendGCode();
 			return true;
 		}else {
 			return false;

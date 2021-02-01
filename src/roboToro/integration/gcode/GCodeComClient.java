@@ -16,8 +16,8 @@ import com.serialpundit.serial.SerialComManager.STOPBITS;
 
 public class GCodeComClient {
 
-	SerialComManager scm;// = new SerialComManager();
-	long handle;
+//	SerialComManager scm;// = new SerialComManager();
+//	long handle;
 
 	public GCodeComClient() throws IOException {
 		// TODO Auto-generated constructor stub
@@ -27,13 +27,22 @@ public class GCodeComClient {
 		comPort.setBaudRate(115200);
 		sendCommand("IsDelta");
 		sendCommand("IsDelta");
-		sendCommand("G28");
-		sendCommand("X45 Y98 Z-240.5");
+	//	sendCommand("G28");
+	//	N05 G28
+
+		//Acceleration
+	//	N10 M204 A1200
+	//	sendCommand("M204 A1200");
+		//Speed
+		//sendCommand("G01 F200");
+		//N15 G01 F200
+	//	sendCommand("G01 X42 Y24 Z-345.5 W0");
 	}
 
 	public void close() {
 		try {
-			scm.closeComPort(handle);
+			//scm.closeComPort(handle);
+			comPort.closePort();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
@@ -44,11 +53,13 @@ public class GCodeComClient {
 
 	public static void main(String[] args) {
 		try {
+			GCodeComClient g = new GCodeComClient();
 			// SerialPort comPort
-			comPort = SerialPort.getCommPorts()[0];
+			//comPort = SerialPort.getCommPorts()[0];
 			// comPort.
-			comPort.openPort();
-			comPort.setBaudRate(115200);
+			//comPort.openPort();
+			//comPort.setBaudRate(115200);
+			//g.clone();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,10 +78,12 @@ public class GCodeComClient {
 		int numRead;
 		byte[] readBuffer;
 		//readBuffer = new byte[comPort.bytesAvailable()];
-		
+		long timeout = 0;
+		long maxTimeout = 1000;
 		try {
 			comPort.writeBytes(writeBuffer, (long) writeBuffer.length);
-			while (comPort.bytesAvailable() == 0)// || comPort.bytesAvailable() == -1)
+			System.out.println("Sending Command: " + s);
+			while (comPort.bytesAvailable() == 0 && timeout++ < maxTimeout)// || comPort.bytesAvailable() == -1)
 				Thread.sleep(20);
 
 			readBuffer = new byte[comPort.bytesAvailable()];
