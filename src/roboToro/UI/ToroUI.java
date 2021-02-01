@@ -679,6 +679,7 @@ public class ToroUI {
 				toro.singleMacroTestThread.start();
 		    }
 		});
+		
 		/*
 		btnStartMacro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
