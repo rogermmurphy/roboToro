@@ -679,6 +679,7 @@ public class ToroUI {
 				toro.singleMacroTestThread.start();
 		    }
 		});
+		
 		/*
 		btnStartMacro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -798,6 +799,7 @@ public class ToroUI {
 				toro.rmRoutineManager.toXML();
 			}
 		});
+		
 		// Create Routine Button Listener //
 		btnCreateNewRoutine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
