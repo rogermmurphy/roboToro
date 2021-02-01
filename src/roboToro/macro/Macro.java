@@ -111,6 +111,7 @@ public class Macro implements Runnable {
 		long startTime = System.currentTimeMillis();
 		long currentDuration = startTime - System.currentTimeMillis();
 		while (currentStep.timeOutML > currentDuration) {
+			currentDuration = startTime - System.currentTimeMillis();
 			if (paused.get()) {
 				synchronized (this) {
 					// Pause

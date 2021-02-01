@@ -670,13 +670,21 @@ public class ToroUI {
 			}
 		});
 		
-		
+		btnStartMacro.addMouseListener(new java.awt.event.MouseAdapter() {
+		    public void mouseClicked(java.awt.event.MouseEvent evt) {
+		    	System.out.println("Strating Thread");
+				toro.singleMacroTestThread = new Thread(toro.singleMacroTest);
+				toro.singleMacroTestThread.start();
+		    }
+		});
+		/*
 		btnStartMacro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Strating Thread");
 				toro.singleMacroTestThread = new Thread(toro.singleMacroTest);
 				toro.singleMacroTestThread.start();
 			}
-		});
+		});*/
 		/*END MACRO TAB SECTION*/
 
 		toro.rmRoutineManager.currentRoutine = toro.rmRoutineManager.alRoutineList.get(0);
