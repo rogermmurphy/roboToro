@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
@@ -88,8 +89,9 @@ public class ToroUI {
 	 * Create the application.
 	 * 
 	 * @throws ParserConfigurationException
+	 * @throws IOException 
 	 */
-	public ToroUI() throws ParserConfigurationException {
+	public ToroUI() throws ParserConfigurationException, IOException {
 		ToroUI.toro = new Toro();
 		fixedUtil = new FixedUtil();
 
@@ -796,6 +798,7 @@ public class ToroUI {
 				toro.rmRoutineManager.toXML();
 			}
 		});
+		
 		// Create Routine Button Listener //
 		btnCreateNewRoutine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

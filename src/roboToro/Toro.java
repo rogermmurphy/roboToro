@@ -5,6 +5,7 @@ package roboToro;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.awt.Color;
@@ -25,6 +26,7 @@ import com.sun.jna.platform.win32.WinDef.HWND;
 import roboToro.Main.WindowInfo;
 import roboToro.game.Game;
 import roboToro.game.tbs2020.FixedUtil;
+import roboToro.integration.gcode.GCodeComClient;
 import roboToro.macro.Macro;
 import roboToro.util.ToroUtils;
 
@@ -67,8 +69,8 @@ public class Toro {
 	//public static String windowName = "Reflector 3 - I810980’s iPhone";
 	
 	//FileLocations
-	public static String sWriteFileLocation = "C:\\Users\\i810980\\Documents\\TSB\\";
-	public static String sReadFileLocation = "C:\\Users\\i810980\\Documents\\TSB\\";
+	public static String sWriteFileLocation = "C:\\Users\\roger\\Documents\\TSB\\";
+	public static String sReadFileLocation = "C:\\Users\\roger\\Documents\\TSB\\";
 	public static String sScreenCaptureLocation = "mime\\";
 	
 	public Robot robot;
@@ -113,14 +115,17 @@ public class Toro {
 	public static String DELTA_Z_CORD_DOWN = "-365.5";
 	public static String DELTA_Z_CORD_UP = "-340";
 	
-	public Toro() throws ParserConfigurationException {
+	//Connections
+	public static GCodeComClient comClient;
+	
+	public Toro() throws ParserConfigurationException, IOException {
 		//hWnd = User32.INSTANCE.FindWindow(null, "Reflector 3 - I810980’s iPhone");
 		//hWnd = User32.INSTANCE.FindWindow(null, windowName);
 		//this.gameWindowInfo = ToroUtils.getWindowInfo(hWnd);
 	//	toroUtils = new ToroUtils(windowName);
-		Toro.ACTUAL_PIXEL_WIDTH = FixedUtil.round1((Toro.DIVICE_HEIGTH_MM / Toro.MAX_HEIGHT_PIXEL),2);
+	//	Toro.ACTUAL_PIXEL_WIDTH = FixedUtil.round1((Toro.DIVICE_HEIGTH_MM / Toro.MAX_HEIGHT_PIXEL),2);
 		
-		
+		comClient = new GCodeComClient();
 		dbFactory = DocumentBuilderFactory.newInstance();
 		dBuilder = dbFactory.newDocumentBuilder();
 		doc = dBuilder.newDocument();

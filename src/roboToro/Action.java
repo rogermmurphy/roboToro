@@ -29,7 +29,26 @@ public class Action {
 	}
 
 	public void sendGCode() {
+		//sendCommand("G01 X42 Y24 Z-345.5 W0");
+		//move to up
+		String upClick = "G01 " ;//X45 Y98 Z-340.5 W0";
+		String downClick = "G01 ";
+		long x = (long)Math.round(actionClickPoint.x * Toro.ACTUAL_PIXEL_WIDTH);
+		long y = (long)Toro.DIVICE_HEIGTH_MM - Math.round(actionClickPoint.y * Toro.ACTUAL_PIXEL_WIDTH);
+		upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP + " W0";
+		downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN + " W0";
 		
+		System.out.println(upClick);
+		System.out.println(downClick);
+		
+		Toro.comClient.sendCommand(upClick);
+		Toro.comClient.sendCommand(downClick);
+		Toro.comClient.sendCommand(upClick);
+		
+		//"G01 X " + this.actionClickPoint.x + Toro.DELTA_Z_CORD_UP + " W0";
+		//move to down
+		//move to up again
+		//Toro.comClient.sendCommand(sXML)
 	}
 	
 	public Action(Rectangle rec, Point p) {

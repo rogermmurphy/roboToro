@@ -65,7 +65,7 @@ public class RoutineManager extends AbstractListModel<String> {
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(Toro.doc);
 			StreamResult result = new StreamResult(
-					new File("C:\\Users\\i810980\\Documents\\TSB\\toroRoutinesConfig.xml"));
+					new File("C:\\Users\\roger\\Documents\\TSB\\toroRoutinesConfig.xml"));
 			transformer.transform(source, result);
 
 			// Output to console for testing
@@ -79,7 +79,7 @@ public class RoutineManager extends AbstractListModel<String> {
 	public void load() {
 
 		try {
-			File file = new File("C:\\Users\\i810980\\Documents\\TSB\\toroRoutinesConfig.xml");
+			File file = new File("C:\\Users\\roger\\Documents\\TSB\\toroRoutinesConfig.xml");
 			// an instance of factory that gives a document builder
 
 			Toro.doc = Toro.dBuilder.parse(file);
