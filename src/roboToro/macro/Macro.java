@@ -91,17 +91,17 @@ public class Macro implements Runnable {
 				if (loopStepAction == 3) {
 					System.out.println("Not but should Stoping Thread... go to edit screen and either add error code for this situation or modifiy to fit");
 					try {
-						Thread.currentThread().wait();
-					} catch (InterruptedException e) {
+						//Thread.currentThread().wait();
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
 				if(loopStepAction == 2) {
 					j++;
-					loopNextStep.passAction.sendGCode();
+					//loopNextStep.passAction.sendGCode();
 				}
 				if(loopStepAction == 1) {
-					loopCurrentStep.passAction.sendGCode();
+				//	loopCurrentStep.passAction.sendGCode();
 				}
 			}
 		}
@@ -109,9 +109,9 @@ public class Macro implements Runnable {
 
 	public int doRunStep(Step currentStep, Step nextStep) {
 		long startTime = System.currentTimeMillis();
-		long currentDuration = startTime - System.currentTimeMillis();
+		long currentDuration = startTime - System.currentTimeMillis() - startTime;
 		while (currentStep.timeOutML > currentDuration) {
-			currentDuration = startTime - System.currentTimeMillis();
+			currentDuration =  System.currentTimeMillis() - startTime;
 			if (paused.get()) {
 				synchronized (this) {
 					// Pause
@@ -124,18 +124,22 @@ public class Macro implements Runnable {
 			if (currentStep.execute()) {
 				return 1;
 			}
+			
 
 			// Sleep
 			try {
-				if(currentStep.lookFoward && nextStep!=null) {
-					if(nextStep.execute())
-						return 2;
-				}
+				
 				Thread.sleep(500);
 				// continue;
 			} catch (InterruptedException e) {
 			}
+			
 		}
+		if(currentStep.lookFoward && nextStep!=null) {
+			if(nextStep.execute())
+				return 2;
+		}
+
 		return 3;
 
 	}

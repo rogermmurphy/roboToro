@@ -624,7 +624,7 @@ public class ToroUI {
 		 standardOut = System.out;
 
 		// re-assigns standard output stream and error output stream
-		 System.setOut(printStream);
+		// System.setOut(printStream);
 		// System.set
 
 		/* Listener and UX setup */

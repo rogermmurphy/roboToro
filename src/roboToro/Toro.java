@@ -53,7 +53,7 @@ public class Toro {
 
 	public static int MODE = 2;
 	public static int ITERATIONS = 3000;
-	public static long DEFAULT_STEP_TIMEOUT_ML = 10000;
+	public static long DEFAULT_STEP_TIMEOUT_ML = 20000; //20 seconds
 	// subtract these numbers to focus on the pitching region
 	// total image size is 478 x 960
 	// 478
@@ -112,8 +112,8 @@ public class Toro {
 	
 	public static double ACTUAL_PIXEL_WIDTH = .117;
 	
-	public static String DELTA_Z_CORD_DOWN = "-365.5";
-	public static String DELTA_Z_CORD_UP = "-340";
+	public static String DELTA_Z_CORD_DOWN = "-365";
+	public static String DELTA_Z_CORD_UP = "-330";
 	
 	//Connections
 	public static GCodeComClient comClient;

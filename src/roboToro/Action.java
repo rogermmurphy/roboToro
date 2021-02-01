@@ -43,7 +43,19 @@ public class Action {
 		
 		Toro.comClient.sendCommand(upClick);
 		Toro.comClient.sendCommand(downClick);
+		try {
+			Thread.sleep(150);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Toro.comClient.sendCommand(upClick);
+		try {
+			Thread.sleep(150);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//"G01 X " + this.actionClickPoint.x + Toro.DELTA_Z_CORD_UP + " W0";
 		//move to down

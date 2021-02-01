@@ -139,13 +139,40 @@ public class Step {
 	public boolean execute() {
 		// TODO Auto-generated method stub
 		if(this.Validate(PhonePanel.image) == 0) {
-			System.out.println("Execution True Step: " + this.stepName);
-			//Toro.comClient.sendCommand(null)
-			passAction.sendGCode();
+			while(this.Validate(PhonePanel.image) == 0) {
+				//repeat click sometimes you have to click 3 or 4 times
+				System.out.println("Execution True Step: " + this.stepName);
+				//Toro.comClient.sendCommand(null)
+				passAction.sendGCode();
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 			return true;
-		}else {
-			return false;
 		}
+		if(this.Validate(PhonePanel.image) < .8) {
+			while(this.Validate(PhonePanel.image) < .8) {
+				//repeat click sometimes you have to click 3 or 4 times
+				System.out.println("Almost Match True Step: " + this.stepName);
+				//Toro.comClient.sendCommand(null)
+				passAction.sendGCode();
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return true;
+		}
+
+		
+	
+			return false;
+		
 	}
 
 }

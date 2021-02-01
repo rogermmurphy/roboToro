@@ -27,14 +27,15 @@ public class GCodeComClient {
 		comPort.setBaudRate(115200);
 		sendCommand("IsDelta");
 		sendCommand("IsDelta");
-	//	sendCommand("G28");
+		sendCommand("G01 F200");
+		sendCommand("G28");
 	//	N05 G28
 
 		//Acceleration
 	//	N10 M204 A1200
 	//	sendCommand("M204 A1200");
 		//Speed
-		//sendCommand("G01 F200");
+		//sendCommand("G01 F100");
 		//N15 G01 F200
 	//	sendCommand("G01 X42 Y24 Z-345.5 W0");
 	}
