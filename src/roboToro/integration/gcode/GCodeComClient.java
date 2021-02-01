@@ -72,6 +72,7 @@ public class GCodeComClient {
 		return true;
 	}
 
+	
 	public boolean sendCommand(String s) {
 
 		byte[] writeBuffer = (s + "\n\r").getBytes();
