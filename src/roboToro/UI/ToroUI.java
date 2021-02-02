@@ -57,7 +57,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ToroUI {
 
-	private static Toro toro;
+	public static Toro toro;
 	private static FixedUtil fixedUtil;
 	private JFrame frame;
 	private PhonePanel uxPhonePanel;
@@ -282,12 +282,12 @@ public class ToroUI {
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(10, 91, 765, 1007);
+		panel_2.setBounds(10, 91, 765, 1126);
 		uxRoutienTab.add(panel_2);
 		panel_2.setLayout(null);
 
 		JLabel lblNewLabel_2_2 = new JLabel("Cusom Logic Class");
-		lblNewLabel_2_2.setBounds(12, 976, 151, 14);
+		lblNewLabel_2_2.setBounds(10, 1100, 151, 14);
 		panel_2.add(lblNewLabel_2_2);
 
 		Label label = new Label("Step Name");
@@ -390,7 +390,7 @@ public class ToroUI {
 
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_6.setBounds(12, 537, 740, 202);
+		panel_6.setBounds(12, 537, 740, 258);
 		panel_2.add(panel_6);
 		panel_6.setLayout(null);
 
@@ -423,6 +423,10 @@ public class ToroUI {
 		JButton btnEndRecordActions = new JButton("End Record Actions");
 		btnEndRecordActions.setBounds(416, 37, 150, 24);
 		panel_6.add(btnEndRecordActions);
+		
+		final JCheckBox chckbxLookAtNextStep = new JCheckBox("Alwayes look at next step");
+		chckbxLookAtNextStep.setBounds(22, 200, 191, 24);
+		panel_6.add(chckbxLookAtNextStep);
 
 		JButton btnNewButton_3 = new JButton("Save Step");
 		btnNewButton_3.setBounds(256, 12, 205, 26);
@@ -440,7 +444,7 @@ public class ToroUI {
 		JPanel panel_6_1 = new JPanel();
 		panel_6_1.setLayout(null);
 		panel_6_1.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		panel_6_1.setBounds(12, 751, 742, 211);
+		panel_6_1.setBounds(10, 877, 742, 211);
 		panel_2.add(panel_6_1);
 
 		JLabel lblNewLabel_5_1 = new JLabel("Fail Action");
@@ -978,6 +982,12 @@ public class ToroUI {
 		});
 
 		// PASS ACTION Commands
+
+		chckbxLookAtNextStep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				toro.rmRoutineManager.currentRoutine.currentStep.passAction.bLookAtNextStep = chckbxLookAtNextStep.isSelected();
+			}
+		});
 
 		createActionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

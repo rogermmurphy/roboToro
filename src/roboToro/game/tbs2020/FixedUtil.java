@@ -26,13 +26,11 @@ import com.sun.jna.win32.StdCallLibrary;
 
 import roboToro.Toro;
 import roboToro.UI.PhonePanel;
+import roboToro.sandbox.TranslucentPhonePanel;
+import roboToro.sandbox.TranslucentWindowDemo;
 
 public class FixedUtil {
 
-
-
-	
-	
 	public static int MODE = 2;
 	public static int ITERATIONS = 3000;
 	// subtract these numbers to focus on the pitching region
@@ -85,16 +83,16 @@ public class FixedUtil {
 					windowInfo.rect.right - windowInfo.rect.left, windowInfo.rect.bottom - windowInfo.rect.top));
 
 		} catch (Exception ex) {
-
+ex.printStackTrace();
 		}
 		// Robot robot = new Robot();
 
 	}
-	
-    public static double round1(double input, int scale) {
-        BigDecimal bigDecimal = new BigDecimal(input).setScale(scale, RoundingMode.HALF_EVEN);
-        return bigDecimal.doubleValue();
-    }
+
+	public static double round1(double input, int scale) {
+		BigDecimal bigDecimal = new BigDecimal(input).setScale(scale, RoundingMode.HALF_EVEN);
+		return bigDecimal.doubleValue();
+	}
 
 	public void setScreenCapture() {
 
@@ -168,8 +166,43 @@ public class FixedUtil {
 		}
 	}
 
+	public void setTransperentWindow(TranslucentWindowDemo tw) {
+		try {
+			capturedRecording = new ArrayList<BufferedImage>();
+
+			//while (bShowLiveScreen) {
+
+				this.setScreenCapture();
+				// capturedRecording.add(this.fScreateScreenCapture);
+				// uxImagePanel.removeAll();
+				// JLabel screenLabel = new JLabel(new ImageIcon(this.fScreateScreenCapture));
+				if (this.fScreateScreenCapture == null) {
+					bShowLiveScreen = false;
+					System.out.println("UX window is not found Runing UX Fix Scropt");
+				}
+				
+				tw.setBounds(windowInfo.rect.left, windowInfo.rect.top,
+						windowInfo.rect.right - windowInfo.rect.left, windowInfo.rect.bottom - windowInfo.rect.top);
+				//uxImagePanel.set
+				
+			//	tw.image = this.fScreateScreenCapture;
+				// uxImagePanel.removeAll();
+				// uxImagePanel.add(screenLabel);
+				tw.revalidate();
+				tw.repaint();
+				// Thread.currentThread();
+			//	Thread.sleep(Toro.LIVE_WINDOW_REFRESH_RATE);
+				// Thread.scurrentThread().wait(10);
+			//}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+
+		}
+	}
+
 	public static double compaireImage(BufferedImage img1, BufferedImage img2) {
-		//System.out.println("compaireImage function start");
+		// System.out.println("compaireImage function start");
 		double avg = 0;
 		double percentage = 0;
 		long bla;
@@ -178,7 +211,7 @@ public class FixedUtil {
 		int h1 = img1.getHeight();
 		int h2 = img2.getHeight();
 		if ((w1 != w2) || (h1 != h2)) {
-			System.out.println("Both images should have same dimwnsions: w1:" + w1 + "  w2" + w2 );
+			System.out.println("Both images should have same dimwnsions: w1:" + w1 + "  w2" + w2);
 		} else {
 			long diff = 0;
 			for (int j = 0; j < h1; j++) {
@@ -201,7 +234,7 @@ public class FixedUtil {
 			}
 			avg = diff / (w1 * h1 * 3);
 			percentage = (avg / 255) * 100;
-		//	System.out.println("Difference: " + percentage);
+			// System.out.println("Difference: " + percentage);
 		}
 		return percentage;
 	}
@@ -287,16 +320,16 @@ public class FixedUtil {
 
 	public static Document convertStringToXMLDocument(String xmlString) {
 		// Parser that produces DOM object trees from XML content
-	
+
 		try {
 			// Create DocumentBuilder with default configuration
-			
-			//factory.
-			//builder.par
+
+			// factory.
+			// builder.par
 
 			// Parse the content to Document object
-			//doc = //roboToro.Toro.b.parse((new StringReader(xmlString)));
-			//Toro.doc.
+			// doc = //roboToro.Toro.b.parse((new StringReader(xmlString)));
+			// Toro.doc.
 			return Toro.doc;
 		} catch (Exception e) {
 			e.printStackTrace();

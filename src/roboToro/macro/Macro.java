@@ -133,12 +133,13 @@ public class Macro implements Runnable {
 				// continue;
 			} catch (InterruptedException e) {
 			}
+			if(currentStep.lookFoward && nextStep!=null && currentStep.passAction.bLookAtNextStep) {
+				if(nextStep.execute())
+					return 2;
+			}
 			
 		}
-		if(currentStep.lookFoward && nextStep!=null) {
-			if(nextStep.execute())
-				return 2;
-		}
+		
 
 		return 3;
 

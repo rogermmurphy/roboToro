@@ -151,6 +151,7 @@ public class Step {
 					e.printStackTrace();
 				}
 			}
+			
 			return true;
 		}
 		if(this.Validate(PhonePanel.image) < .8) {

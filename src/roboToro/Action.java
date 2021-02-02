@@ -16,10 +16,12 @@ public class Action {
 	public Point actionClickPoint;
 	public ArrayList<Point> alPointList;
 	public String sXML;
+	public boolean bLookAtNextStep;
 	//public long timeOutML;
 
 	public Action() {
 		// TODO Auto-generated constructor stub
+		bLookAtNextStep = false;
 		actionClickPoint = new Point(0, 0);
 		alPointList = new ArrayList<Point>();
 		alPointList.add(actionClickPoint);
@@ -71,6 +73,9 @@ public class Action {
 
 	public Element toXML() {
 		Element rootElement = Toro.doc.createElement("ACTION");
+		Element lookFWD = Toro.doc.createElement("LOOK_FOWARD");
+		lookFWD.appendChild(Toro.doc.createTextNode(Boolean.toString(this.bLookAtNextStep)));
+		rootElement.appendChild(lookFWD);
 		// Element name = Toro.doc.createElement("PASS");
 		// name.appendChild(Toro.doc.createTextNode(stepName));
 		// rootElement.appendChild(name);
@@ -93,7 +98,11 @@ public class Action {
 	}
 
 	public void load(Element root) {
-		//Element nActionName = (Element) root.getElementsByTagName("ACTION").item(0);
+		NodeList nlLookFWD =  root.getElementsByTagName("LOOK_FOWARD");
+		if(nlLookFWD != null && nlLookFWD.getLength() > 0) {
+			if(nlLookFWD.item(0).getTextContent().compareTo("true") == 0)
+				this.bLookAtNextStep = true;
+		}
 		NodeList nlClicks = root.getElementsByTagName("CLICK");
 		sXML = "";
 		alPointList = new ArrayList<Point>();
