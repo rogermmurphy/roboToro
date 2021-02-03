@@ -79,7 +79,7 @@ public class Macro implements Runnable {
 			}
 			Step loopCurrentStep;
 			Step loopNextStep;
-			continueFor: for (int j = 0; j < rMain.alStepList.size(); j++) {
+			for (int j = 0; j < rMain.alStepList.size(); j++) {
 				loopCurrentStep = rMain.alStepList.get(j);
 				if((j+1) <  rMain.alStepList.size()) {
 					loopNextStep = rMain.alStepList.get(j+1);
@@ -92,7 +92,7 @@ public class Macro implements Runnable {
 					
 					System.out.println("Stoping Thread");
 					System.out.println(loopCurrentStep.stepName + " iteration " + iNumberOfIterations + "  main step number: " + i);
-					int erroLoopStepAction;
+					/*	int erroLoopStepAction;
 					for(int l = 0; this.rError != null &&l < this.rError.getSize(); l++) {
 						Step erroLoopCurrentStep = rError.alStepList.get(l);
 						Step errorNextStep = null;
@@ -118,10 +118,11 @@ public class Macro implements Runnable {
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
-					}
+					}*/
 				}
 				if(loopStepAction == 2) {
 					j++;
+					continue;
 					//loopNextStep.passAction.sendGCode();
 				}
 				if(loopStepAction == 1) {

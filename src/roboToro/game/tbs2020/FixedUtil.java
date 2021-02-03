@@ -57,7 +57,7 @@ public class FixedUtil {
 	public Robot robot;
 	public WindowInfo windowInfo;
 	private boolean lookforwindoweverytime;
-	public static String windowName = "Reflector 3 - I810980’s iPhone";
+	public static String windowName = "Reflector 3 - iPhone";
 
 	public FixedUtil() {
 		isRecord = false;
@@ -212,6 +212,7 @@ ex.printStackTrace();
 		int h2 = img2.getHeight();
 		if ((w1 != w2) || (h1 != h2)) {
 			System.out.println("Both images should have same dimwnsions: w1:" + w1 + "  w2" + w2);
+			percentage = 3000;
 		} else {
 			long diff = 0;
 			for (int j = 0; j < h1; j++) {

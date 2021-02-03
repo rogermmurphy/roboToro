@@ -139,10 +139,10 @@ public class Step {
 	public boolean execute() {
 		// TODO Auto-generated method stub
 		//System.out.println("passAction.noValidation: " + passAction.noValidation);
-		if(passAction.noValidation) {
-			passAction.sendGCode();
-			return true;
-		}
+		//if(passAction.noValidation) {
+		//	passAction.sendGCode();
+		//	return true;
+		//}
 		if(this.Validate(PhonePanel.image) == 0) {
 			while(this.Validate(PhonePanel.image) == 0) {
 				//repeat click sometimes you have to click 3 or 4 times

@@ -30,7 +30,7 @@ public class GCodeComClient {
 		sendCommand("IsDelta");
 		sendCommand("G28");
 		sendCommand("G01 F250");
-		sendCommand("M204 A1800");
+		//sendCommand("M204 A1800");
 	
 		sendCommand("G28");
 	//	N05 G28

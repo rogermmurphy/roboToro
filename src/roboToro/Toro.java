@@ -97,7 +97,7 @@ public class Toro {
 	
 	// variables
 //	public Device deviceType;
-	public String windowName = "Reflector 3 - I810980’s iPhone";
+	public String windowName = "Reflector 3 - iPhone";
 	//public ArrayLiat al
 	//public static String windowName = "Document - WordPad";
 	
@@ -106,15 +106,15 @@ public class Toro {
 	//public ToroUtils toroUtils;
 	
 	//divice settings
-	public static double DIVICE_WIDTH_MM = 70.9;
-	public static double DIVICE_HEIGTH_MM = 143.6;
+	public static double DIVICE_WIDTH_MM = 77.9;
+	public static double DIVICE_HEIGTH_MM = 158.2;
 	
-	public static double MAX_WIDTH__PIXEL = 606;
-	public static double MAX_HEIGHT_PIXEL = 1218;
+	public static double MAX_WIDTH__PIXEL = 543;
+	public static double MAX_HEIGHT_PIXEL = 1104;
 	
-	public static double ACTUAL_PIXEL_WIDTH = .117;
+	public static double ACTUAL_PIXEL_WIDTH = .1438;
 	
-	public static String DELTA_Z_CORD_DOWN = "-368";
+	public static String DELTA_Z_CORD_DOWN = "-370";
 	public static String DELTA_Z_CORD_UP = "-330";
 	
 	//Connections
