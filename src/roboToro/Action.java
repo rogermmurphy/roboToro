@@ -41,16 +41,16 @@ public class Action {
 			String downClick = "G01 ";
 			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH);
 			long y = (long) Toro.DIVICE_HEIGTH_MM - Math.round(p.y * Toro.ACTUAL_PIXEL_WIDTH);
-			x += Math.random(); //% Toro.xVAR;
-			x -= Math.random();// % Toro.xVAR;
+			x += Math.random()*2; //% Toro.xVAR;
+			x -= Math.random()*2;// % Toro.xVAR;
 		//	y += Math.random() % Toro.yVAR;
 		//	y += x += Math.random() % Toro.yVAR;
 
 			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP + " W0";
 			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN + " W0";
 
-			System.out.println(upClick);
-			System.out.println(downClick);
+			//System.out.println(upClick);
+			//System.out.println(downClick);
 
 			Toro.comClient.sendCommand(upClick);
 			Toro.comClient.sendCommand(downClick);
