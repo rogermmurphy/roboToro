@@ -72,6 +72,8 @@ public class Toro {
 	public static String sWriteFileLocation = "C:\\Users\\roger\\Documents\\TSB\\";
 	public static String sReadFileLocation = "C:\\Users\\roger\\Documents\\TSB\\";
 	public static String sScreenCaptureLocation = "mime\\";
+	public static int xVAR = 4;
+	public static int yVAR = 2;
 	
 	public Robot robot;
 	//public ArrayList <Routine> alRoutines;
@@ -112,7 +114,7 @@ public class Toro {
 	
 	public static double ACTUAL_PIXEL_WIDTH = .117;
 	
-	public static String DELTA_Z_CORD_DOWN = "-365";
+	public static String DELTA_Z_CORD_DOWN = "-368";
 	public static String DELTA_Z_CORD_UP = "-330";
 	
 	//Connections

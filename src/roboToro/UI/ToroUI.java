@@ -223,14 +223,10 @@ public class ToroUI {
 		chckbxRunAgainAfter.setBounds(10, 282, 189, 21);
 		panel_7.add(chckbxRunAgainAfter);
 
-		JButton btnNewButton = new JButton("Pause");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		JButton btnTogleStartStop = new JButton("Togle Start Stop");
 
-			}
-		});
-		btnNewButton.setBounds(10, 338, 98, 26);
-		panel_7.add(btnNewButton);
+		btnTogleStartStop.setBounds(10, 338, 98, 26);
+		panel_7.add(btnTogleStartStop);
 
 		JLabel lblNewLabel_2_3 = new JLabel("Set Routien Parameters to create a Macro");
 		lblNewLabel_2_3.setBounds(449, 59, 198, 25);
@@ -427,6 +423,10 @@ public class ToroUI {
 		final JCheckBox chckbxLookAtNextStep = new JCheckBox("Alwayes look at next step");
 		chckbxLookAtNextStep.setBounds(22, 200, 191, 24);
 		panel_6.add(chckbxLookAtNextStep);
+		
+		final JCheckBox chckbxNoValidation = new JCheckBox("Do not validate");
+		chckbxNoValidation.setBounds(22, 230, 191, 24);
+		panel_6.add(chckbxNoValidation);
 
 		JButton btnNewButton_3 = new JButton("Save Step");
 		btnNewButton_3.setBounds(256, 12, 205, 26);
@@ -980,12 +980,29 @@ public class ToroUI {
 				uxValidateImagePanel.repaint();
 			}
 		});
+		
+		btnTogleStartStop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				toro.singleMacroTest.paused.set(!toro.singleMacroTest.paused.get());
+				if(toro.singleMacroTest.paused.get()) {
+					toro.singleMacroTestThread.notify();
+				}
+			
+			}
+		});
 
 		// PASS ACTION Commands
 
 		chckbxLookAtNextStep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				toro.rmRoutineManager.currentRoutine.currentStep.passAction.bLookAtNextStep = chckbxLookAtNextStep.isSelected();
+				
+			}
+		});
+		
+		chckbxNoValidation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				toro.rmRoutineManager.currentRoutine.currentStep.passAction.noValidation = chckbxNoValidation.isSelected();
 			}
 		});
 

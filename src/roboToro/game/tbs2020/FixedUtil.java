@@ -156,7 +156,7 @@ ex.printStackTrace();
 				uxImagePanel.revalidate();
 				uxImagePanel.repaint();
 				// Thread.currentThread();
-				Thread.sleep(Toro.LIVE_WINDOW_REFRESH_RATE);
+			//	Thread.sleep(Toro.LIVE_WINDOW_REFRESH_RATE);
 				// Thread.scurrentThread().wait(10);
 			}
 

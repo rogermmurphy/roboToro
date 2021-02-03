@@ -25,9 +25,13 @@ public class GCodeComClient {
 		// comPort.
 		comPort.openPort();
 		comPort.setBaudRate(115200);
+		
 		sendCommand("IsDelta");
 		sendCommand("IsDelta");
-		sendCommand("G01 F200");
+		sendCommand("G28");
+		sendCommand("G01 F250");
+		sendCommand("M204 A1800");
+	
 		sendCommand("G28");
 	//	N05 G28
 

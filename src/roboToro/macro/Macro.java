@@ -33,7 +33,7 @@ public class Macro implements Runnable {
 		paused = new AtomicBoolean(false);
 		allowInterupt = false;
 		rErrorCallBack = false;
-		iNumberOfIterations = 5;
+		iNumberOfIterations = 100;
 	}
 
 	public synchronized Element toXML() throws ParserConfigurationException {
@@ -79,7 +79,7 @@ public class Macro implements Runnable {
 			}
 			Step loopCurrentStep;
 			Step loopNextStep;
-			for (int j = 0; j < rMain.alStepList.size(); j++) {
+			continueFor: for (int j = 0; j < rMain.alStepList.size(); j++) {
 				loopCurrentStep = rMain.alStepList.get(j);
 				if((j+1) <  rMain.alStepList.size()) {
 					loopNextStep = rMain.alStepList.get(j+1);
@@ -89,11 +89,35 @@ public class Macro implements Runnable {
 				}
 				int loopStepAction = this.doRunStep(loopCurrentStep,loopNextStep);
 				if (loopStepAction == 3) {
-					System.out.println("Not but should Stoping Thread... go to edit screen and either add error code for this situation or modifiy to fit");
-					try {
-						//Thread.currentThread().wait();
-					} catch (Exception e) {
-						e.printStackTrace();
+					
+					System.out.println("Stoping Thread");
+					System.out.println(loopCurrentStep.stepName + " iteration " + iNumberOfIterations + "  main step number: " + i);
+					int erroLoopStepAction;
+					for(int l = 0; this.rError != null &&l < this.rError.getSize(); l++) {
+						Step erroLoopCurrentStep = rError.alStepList.get(l);
+						Step errorNextStep = null;
+						if((l+1) <  rError.alStepList.size()) {
+							errorNextStep = rError.alStepList.get(j+1);
+						}else {
+							//throw away variable
+							errorNextStep = null;
+						}
+						erroLoopStepAction = this.doRunStep(erroLoopCurrentStep,errorNextStep);
+						if(erroLoopStepAction < 3) {
+							j--;
+							continue continueFor;
+							
+						}
+					}
+					paused.set(true);
+					synchronized (this) {
+						// Pause
+						try {
+							Thread.currentThread().wait();
+							//must call notify fu
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 				if(loopStepAction == 2) {
@@ -118,6 +142,7 @@ public class Macro implements Runnable {
 					try {
 						Thread.currentThread().wait();
 					} catch (InterruptedException e) {
+						e.printStackTrace();
 					}
 				}
 			}
@@ -129,7 +154,7 @@ public class Macro implements Runnable {
 			// Sleep
 			try {
 				
-				Thread.sleep(500);
+				Thread.sleep(100);
 				// continue;
 			} catch (InterruptedException e) {
 			}
