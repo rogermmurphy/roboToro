@@ -53,9 +53,10 @@ public class Toro {
 
 	public static int MODE = 2;
 	public static int ITERATIONS = 3000;
-	public static long DEFAULT_STEP_TIMEOUT_ML = 20000; //20 seconds
+	public static long DEFAULT_STEP_TIMEOUT_ML = 10000; //10 seconds
 	// subtract these numbers to focus on the pitching region
 	// total image size is 478 x 960
+	
 	// 478
 	public static int PITCHING_REGION_LEFT = 164;
 	public static int PITCHING_REGION_TOP = 210;

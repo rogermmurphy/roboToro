@@ -65,6 +65,11 @@ public class Macro implements Runnable {
 		// execute rStart;
 		// skip initialization for now
 		boolean firstTime = false;
+		int numberOfFailedAttemps = 0;
+		for(int n = 0; this.rStart != null &&n < this.rStart.alStepList.size(); n++) {
+			//hard reset is the easiest to code for
+			this.doRunStep(this.rStart.alStepList.get(n),null);
+		}
 		for (int i = 0; i < iNumberOfIterations; i++) {
 
 			if (firstTime) {
@@ -79,6 +84,7 @@ public class Macro implements Runnable {
 			}
 			Step loopCurrentStep;
 			Step loopNextStep;
+			
 			for (int j = 0; j < rMain.alStepList.size(); j++) {
 				loopCurrentStep = rMain.alStepList.get(j);
 				if((j+1) <  rMain.alStepList.size()) {
@@ -89,7 +95,20 @@ public class Macro implements Runnable {
 				}
 				int loopStepAction = this.doRunStep(loopCurrentStep,loopNextStep);
 				if (loopStepAction == 3) {
-					
+					numberOfFailedAttemps++;
+					if(numberOfFailedAttemps > rMain.alStepList.size()) {
+						//run error code
+						for(int l = 0; this.rError != null && l < this.rError.alStepList.size(); l++) {
+							//hard reset is the easiest to code for
+							this.doRunStep(this.rError.alStepList.get(l),null);
+						}
+						//now we need the visual queue
+						for(int m = 0; this.rStart != null && m < this.rStart.alStepList.size(); m++) {
+							//hard reset is the easiest to code for
+							this.doRunStep(this.rStart.alStepList.get(m),null);
+						}
+					}
+					numberOfFailedAttemps = 0;
 					System.out.println("Stoping Thread");
 					System.out.println(loopCurrentStep.stepName + " iteration " + iNumberOfIterations + "  main step number: " + i);
 					/*	int erroLoopStepAction;
@@ -122,10 +141,12 @@ public class Macro implements Runnable {
 				}
 				if(loopStepAction == 2) {
 					j++;
+					numberOfFailedAttemps = 0;
 					continue;
 					//loopNextStep.passAction.sendGCode();
 				}
 				if(loopStepAction == 1) {
+					numberOfFailedAttemps = 0;
 				//	loopCurrentStep.passAction.sendGCode();
 				}
 			}

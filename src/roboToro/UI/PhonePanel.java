@@ -22,7 +22,6 @@ import roboToro.Toro;
 
 public class PhonePanel extends JPanel {
 
-	
 	 /**
 	 * 
 	 */

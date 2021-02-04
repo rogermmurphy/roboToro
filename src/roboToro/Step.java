@@ -50,6 +50,7 @@ public class Step {
 	public double Validate(BufferedImage img1) {
 	//	System.out.println(subImageLocation.x + " " + subImageLocation.y + " " +  subImageLocation.width + " " + subImageLocation.height);
 		return FixedUtil.compaireImage(img1.getSubimage(subImageLocation.x, subImageLocation.y, subImageLocation.width, subImageLocation.height), image);
+		
 	}
 	
 	public Element toXML() throws ParserConfigurationException {
