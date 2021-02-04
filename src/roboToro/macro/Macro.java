@@ -33,7 +33,7 @@ public class Macro implements Runnable {
 		paused = new AtomicBoolean(false);
 		allowInterupt = false;
 		rErrorCallBack = false;
-		iNumberOfIterations = 100;
+		iNumberOfIterations = 400;
 	}
 
 	public synchronized Element toXML() throws ParserConfigurationException {

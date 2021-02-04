@@ -225,8 +225,12 @@ public class ToroUI {
 
 		JButton btnTogleStartStop = new JButton("Togle Start Stop");
 
-		btnTogleStartStop.setBounds(10, 338, 98, 26);
+		btnTogleStartStop.setBounds(10, 338, 152, 26);
 		panel_7.add(btnTogleStartStop);
+		
+		JButton btnLive = new JButton("Live ");
+		btnLive.setBounds(172, 338, 104, 25);
+		panel_7.add(btnLive);
 
 		JLabel lblNewLabel_2_3 = new JLabel("Set Routien Parameters to create a Macro");
 		lblNewLabel_2_3.setBounds(449, 59, 198, 25);
@@ -987,6 +991,13 @@ public class ToroUI {
 				if(toro.singleMacroTest.paused.get()) {
 					toro.singleMacroTestThread.notify();
 				}
+			
+			}
+		});
+		
+		btnLive.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				uxPhonePanel.liveClick = !uxPhonePanel.liveClick;
 			
 			}
 		});
