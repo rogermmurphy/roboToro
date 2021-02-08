@@ -23,7 +23,6 @@ import java.awt.image.BufferedImage;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef.HWND;
 
-
 import roboToro.Main.WindowInfo;
 import roboToro.game.Game;
 import roboToro.game.tbs2020.FixedUtil;
