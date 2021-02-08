@@ -965,6 +965,33 @@ public class ToroUI {
 				// textArea.repaint();
 			}
 		});
+		
+		uxValidationTimeOutMS1.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				//System.out.println("tfStepName : keyTyped : START");
+				try {
+				toro.rmRoutineManager.currentRoutine.currentStep.passAction.timeOutML = Long.parseLong(uxValidationTimeOutMS1.getText());
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				//toro.rmRoutineManager.currentRoutine.currentStep.stepName = tfStepName.getText() + e.getKeyChar();
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		btnEndScreenCapture.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -988,9 +1015,9 @@ public class ToroUI {
 		btnTogleStartStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				toro.singleMacroTest.paused.set(!toro.singleMacroTest.paused.get());
-				if(toro.singleMacroTest.paused.get()) {
-					toro.singleMacroTestThread.notify();
-				}
+				//if(toro.singleMacroTest.paused.get()) {
+				//	toro.singleMacroTestThread.notify();
+				//}
 			
 			}
 		});

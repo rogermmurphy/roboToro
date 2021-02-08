@@ -53,7 +53,7 @@ public class Toro {
 
 	public static int MODE = 2;
 	public static int ITERATIONS = 3000;
-	public static long DEFAULT_STEP_TIMEOUT_ML = 10000; //10 seconds
+	public static long DEFAULT_STEP_TIMEOUT_ML = 30000; //10 seconds
 	// subtract these numbers to focus on the pitching region
 	// total image size is 478 x 960
 	
@@ -107,19 +107,25 @@ public class Toro {
 	//public ToroUtils toroUtils;
 	
 	//divice settings
-	public static double DIVICE_WIDTH_MM = 77.9;
-	public static double DIVICE_HEIGTH_MM = 158.2;
+	public static double DIVICE_WIDTH_MM = 77.9 + 8;
+	public static double DIVICE_HEIGTH_MM = 158.2 + 8;
 	
 	public static double MAX_WIDTH__PIXEL = 543;
 	public static double MAX_HEIGHT_PIXEL = 1104;
 	
-	public static double ACTUAL_PIXEL_WIDTH = .1438;
+	//this needs some work but there are ~30 added px to width and height
+	public static double ACTUAL_PIXEL_WIDTH = .15;//.1438;
+	//.26458333 
+	//3.7795275591 px in a mm
 	
-	public static String DELTA_Z_CORD_DOWN = "-370";
-	public static String DELTA_Z_CORD_UP = "-330";
-	
+	//public static String DELTA_Z_CORD_DOWN = "-370.5";
+	//public static String DELTA_Z_CORD_UP = "-330";
+	public static String DELTA_Z_CORD_DOWN = "-342";
+	public static String DELTA_Z_CORD_UP = "-320"; 	
+	public static boolean RUN_LENEAR = true;
 	//Connections
 	public static GCodeComClient comClient;
+	public static boolean runLinerar = true;
 	
 	public Toro() throws ParserConfigurationException, IOException {
 		//hWnd = User32.INSTANCE.FindWindow(null, "Reflector 3 - I810980’s iPhone");

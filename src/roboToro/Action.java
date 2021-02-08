@@ -18,7 +18,7 @@ public class Action {
 	public String sXML;
 	public boolean bLookAtNextStep;
 	public boolean noValidation;
-	// public long timeOutML;
+	public long timeOutML;
 
 	public Action() {
 		// TODO Auto-generated constructor stub
@@ -30,6 +30,7 @@ public class Action {
 		actionDrag = new Rectangle(0, 0, 0, 0);
 		sXML = "<CLICK><LOCATION x=\"" + actionClickPoint.x + "\" y=\"" + actionClickPoint.y
 				+ "\" ></LOCATION></CLICK>";
+		timeOutML = Toro.DEFAULT_STEP_TIMEOUT_ML;
 	}
 
 	public void sendGCode() {
@@ -54,14 +55,68 @@ public class Action {
 
 			Toro.comClient.sendCommand(upClick);
 			Toro.comClient.sendCommand(downClick);
+			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			Toro.comClient.sendCommand(upClick);
+			
 			/*
+			
 			try {
 				//Thread.sleep(150);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}*/
+		}
+		// "G01 X " + this.actionClickPoint.x + Toro.DELTA_Z_CORD_UP + " W0";
+		// move to down
+		// move to up again
+		// Toro.comClient.sendCommand(sXML)
+	}
+	
+	public void sendGCodeWithPause(long ms) {
+		// sendCommand("G01 X42 Y24 Z-345.5 W0");
+		// move to up
+		for (int i = 0; i < this.alPointList.size(); i++) {
+			Point p = this.alPointList.get(i);
+			String upClick = "G01 ";// X45 Y98 Z-340.5 W0";
+			String downClick = "G01 ";
+			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH);
+			long y = (long) Toro.DIVICE_HEIGTH_MM - Math.round(p.y * Toro.ACTUAL_PIXEL_WIDTH);
+			x += Math.random()*2; //% Toro.xVAR;
+			x -= Math.random()*2;// % Toro.xVAR;
+		//	y += Math.random() % Toro.yVAR;
+		//	y += x += Math.random() % Toro.yVAR;
+
+			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP + " W0";
+			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN + " W0";
+
+			//System.out.println(upClick);
+			//System.out.println(downClick);
+
+			Toro.comClient.sendCommand(upClick);
+			Toro.comClient.sendCommand(downClick);
+			
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			Toro.comClient.sendCommand(upClick);
+			
+			try {
+				Thread.sleep(ms);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			/*
 			
 			try {
 				//Thread.sleep(150);
@@ -123,7 +178,7 @@ public class Action {
 		if (nlNoValidation != null && nlNoValidation.getLength() > 0) {
 			System.out.println(nlNoValidation.item(0).getTextContent().trim().compareToIgnoreCase("true"));
 			if (nlNoValidation.item(0).getTextContent().trim().compareToIgnoreCase("true") == 0)
-				this.bLookAtNextStep = true;
+				this.noValidation = true;
 		}
 		NodeList nlClicks = root.getElementsByTagName("CLICK");
 		sXML = "";
