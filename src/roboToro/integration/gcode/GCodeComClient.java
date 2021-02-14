@@ -25,14 +25,25 @@ public class GCodeComClient {
 		// comPort.
 		comPort.openPort();
 		comPort.setBaudRate(115200);
+		//System.out.println("is delta");
+		sendCommand("IsDelta");
+		//System.out.println("is delta");
+		sendCommand("IsDelta");
+	//	System.out.println("is delta");
+		//sendCommand("M508");
+		 
+		sendCommand("G28");
+		//System.out.println("G28");
 		
-		sendCommand("IsDelta");
-		sendCommand("IsDelta");
-		sendCommand("G28");
-		sendCommand("G01 F250");
-		//sendCommand("M204 A1800");
-	
-		sendCommand("G28");
+		//System.out.println("M502 start");
+		////sendCommand("M502");
+		System.out.println("m502 end");
+		sendCommand("G01 F600");
+	//	sendCommand("M204 T2000");
+		sendCommand("M204 A0");
+		sendCommand("M205 S600");
+		 
+		//sendCommand("G28");
 	//	N05 G28
 
 		//Acceleration
@@ -88,13 +99,13 @@ public class GCodeComClient {
 		long maxTimeout = 1000;
 		try {
 			comPort.writeBytes(writeBuffer, (long) writeBuffer.length);
-			System.out.println("Sending Command: " + s);
+			//System.out.println("Sending Command: " + s);
 			while (comPort.bytesAvailable() == 0 && timeout++ < maxTimeout)// || comPort.bytesAvailable() == -1)
 				Thread.sleep(20);
 
 			readBuffer = new byte[comPort.bytesAvailable()];
 			numRead = comPort.readBytes(readBuffer, readBuffer.length);
-			System.out.println("Read " + numRead + " bytes." + new String(readBuffer, StandardCharsets.US_ASCII));
+			//System.out.println("Read " + numRead + " bytes." + new String(readBuffer, StandardCharsets.US_ASCII));
 			// writeBuffer = "G28\n\r".getBytes();
 			//numRead = comPort.readBytes(readBuffer, readBuffer.length);
 		} catch (Exception ex) {

@@ -211,7 +211,7 @@ ex.printStackTrace();
 		int h1 = img1.getHeight();
 		int h2 = img2.getHeight();
 		if ((w1 != w2) || (h1 != h2)) {
-			System.out.println("Both images should have same dimwnsions: w1:" + w1 + "  w2" + w2);
+			//System.out.println("Both images should have same dimwnsions: w1:" + w1 + "  w2" + w2);
 			percentage = 3000;
 		} else {
 			long diff = 0;

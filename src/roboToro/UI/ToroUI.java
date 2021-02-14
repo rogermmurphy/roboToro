@@ -75,6 +75,7 @@ public class ToroUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					ToroUI window = new ToroUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {

@@ -52,7 +52,7 @@ public class Step {
 		try {
 			return FixedUtil.compaireImage(img1.getSubimage(subImageLocation.x, subImageLocation.y, subImageLocation.width, subImageLocation.height), image);
 		}catch (Exception ex) {
-			System.out.println("error in recorded step: " + this.stepName);
+			//System.out.println("error in recorded step: " + this.stepName);
 			return 100.1;
 		}
 		

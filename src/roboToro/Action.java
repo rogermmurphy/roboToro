@@ -41,7 +41,7 @@ public class Action {
 			String upClick = "G01 ";// X45 Y98 Z-340.5 W0";
 			String downClick = "G01 ";
 			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH);
-			long y = (long) Toro.DIVICE_HEIGTH_MM - Math.round(p.y * Toro.ACTUAL_PIXEL_WIDTH);
+			long y = (long) Toro.DIVICE_HEIGTH_MM - Math.round(p.y * Toro.ACTUAL_PIXEL_HEIGHT);
 			x += Math.random()*2; //% Toro.xVAR;
 			x -= Math.random()*2;// % Toro.xVAR;
 		//	y += Math.random() % Toro.yVAR;
@@ -49,21 +49,24 @@ public class Action {
 
 			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP + " W0";
 			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN + " W0";
-
-			//System.out.println(upClick);
-			//System.out.println(downClick);
-
-			Toro.comClient.sendCommand(upClick);
-			Toro.comClient.sendCommand(downClick);
-			
 			try {
-				Thread.sleep(200);
+			System.out.println(upClick);
+			System.out.println(downClick);
+			Toro.comClient.sendCommand("M205 S3000");
+			Toro.comClient.sendCommand(upClick);
+			Thread.sleep(30);
+			Toro.comClient.sendCommand("M205 S300");
+			Toro.comClient.sendCommand(downClick);
+			Thread.sleep(10);
+			
+			
+				
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Toro.comClient.sendCommand(upClick);
-			
+			/*
 			/*
 			
 			try {
@@ -96,8 +99,8 @@ public class Action {
 			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP + " W0";
 			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN + " W0";
 
-			//System.out.println(upClick);
-			//System.out.println(downClick);
+			System.out.println(upClick);
+		System.out.println(downClick);
 
 			Toro.comClient.sendCommand(upClick);
 			Toro.comClient.sendCommand(downClick);
@@ -176,7 +179,7 @@ public class Action {
 		}
 		NodeList nlNoValidation = root.getElementsByTagName("NO_VALIDATION");
 		if (nlNoValidation != null && nlNoValidation.getLength() > 0) {
-			System.out.println(nlNoValidation.item(0).getTextContent().trim().compareToIgnoreCase("true"));
+			//System.out.println(nlNoValidation.item(0).getTextContent().trim().compareToIgnoreCase("true"));
 			if (nlNoValidation.item(0).getTextContent().trim().compareToIgnoreCase("true") == 0)
 				this.noValidation = true;
 		}

@@ -70,20 +70,32 @@ public class PhonePanel extends JPanel {
          			String downClick = "G01 ";
          			long x = (long) Math.round(actionClickPoint.x * Toro.ACTUAL_PIXEL_WIDTH);
          			long y = (long) Toro.DIVICE_HEIGTH_MM - Math.round(actionClickPoint.y * Toro.ACTUAL_PIXEL_WIDTH);
-         			x += Math.random()*2; //% Toro.xVAR;
-         			x -= Math.random()*2;// % Toro.xVAR;
+         			//x += Math.random()*2; //% Toro.xVAR;
+         			//x -= Math.random()*2;// % Toro.xVAR;
          		//	y += Math.random() % Toro.yVAR;
          		//	y += x += Math.random() % Toro.yVAR;
 
-         			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP + " W0";
-         			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN + " W0";
-
-         			//System.out.println(upClick);
-         			//System.out.println(downClick);
-
-         			Toro.comClient.sendCommand(upClick);
-         			Toro.comClient.sendCommand(downClick);
-         			Toro.comClient.sendCommand(upClick);
+         			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP;
+         			
+         			
+         			
+         			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN;
+         			try {
+         			System.out.println(upClick);
+        			System.out.println(downClick);
+        			Toro.comClient.sendCommand("M205 S3000");
+        			Thread.sleep(20);
+        			Toro.comClient.sendCommand(upClick);
+        			Toro.comClient.sendCommand("M205 S300");
+        			Toro.comClient.sendCommand(downClick);
+        			
+        			
+        				Thread.sleep(10);
+        			} catch (InterruptedException ex) {
+        				// TODO Auto-generated catch block
+        				ex.printStackTrace();
+        			}
+        			Toro.comClient.sendCommand(upClick);
             	 }
  						//actionClickPoint.x +</LOCATION></CLICK>");
                  repaint();
