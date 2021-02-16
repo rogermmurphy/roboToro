@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 public class TapSettingsView extends JPanel {
 	private JTextField tfDeviceWidth;
 	private JTextField textField_DeviceHeight;

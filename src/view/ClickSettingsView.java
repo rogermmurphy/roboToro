@@ -11,6 +11,7 @@ import java.awt.FlowLayout;
 import java.awt.Panel;
 import java.awt.Label;
 
+
 public class ClickSettingsView extends JPanel {
 	private JTextField textField_5;
 	private JTextField textField_6;

@@ -2,6 +2,7 @@ package roboToro.model;
 
 public class TapSettingsModel implements GenericToroModel {
 
+	
 	/*
 	 * iPhone 12 Pro Max Display: 6.7" Super Retina XDR (OLED) Screen resolution
 	 * (points): 428 x 926 Native resolution (pixels): 1284 x 2778 (458 ppi) Scale

@@ -10,6 +10,7 @@ import javax.swing.JFormattedTextField;
 import java.awt.FlowLayout;
 import javax.swing.JCheckBox;
 
+
 public class ApplicationSettingsView extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;

@@ -10,6 +10,7 @@ import javax.swing.JFormattedTextField;
 import java.awt.FlowLayout;
 import java.awt.Panel;
 
+
 public class CalibrationSettingsView extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
