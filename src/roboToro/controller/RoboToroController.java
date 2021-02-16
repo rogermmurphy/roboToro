@@ -32,7 +32,7 @@ public class RoboToroController {
 	public Thread phonePanelThread;
 	public Thread singleMacroTestThread;
 	public ArrayList<Thread> tMacroThreads;
-	public Thread phonePanelThread;
+//	public Thread phonePanelThread;
 	
 	//static Variable Decelerations
 	public static DocumentBuilderFactory dbFactory;
@@ -48,17 +48,15 @@ public class RoboToroController {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					ToroUI window = new ToroUI();
 					ToroUI.toro = new Toro();
-					fixedUtil = new FixedUtil();
-
-					try {
-						initialize();
-						phonePanelThread = new Thread(() -> fixedUtil.setLiveWindow(this.uxPhonePanel));
-						toro.phonePanelThread.start();
-					} catch (Exception ex) {
-						ex.printStackTrace();
-					}
-			
-					window.frame.setVisible(true);
+					/*
+					 * fixedUtil = new FixedUtil();
+					 * 
+					 * try { initialize(); phonePanelThread = new Thread(() ->
+					 * fixedUtil.setLiveWindow(this.uxPhonePanel)); toro.phonePanelThread.start(); }
+					 * catch (Exception ex) { ex.printStackTrace(); }
+					 * 
+					 * window.frame.setVisible(true);
+					 */
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
