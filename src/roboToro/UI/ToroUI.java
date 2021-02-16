@@ -75,6 +75,7 @@ public class ToroUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					ToroUI window = new ToroUI();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -225,8 +226,12 @@ public class ToroUI {
 
 		JButton btnTogleStartStop = new JButton("Togle Start Stop");
 
-		btnTogleStartStop.setBounds(10, 338, 98, 26);
+		btnTogleStartStop.setBounds(10, 338, 152, 26);
 		panel_7.add(btnTogleStartStop);
+		
+		JButton btnLive = new JButton("Live ");
+		btnLive.setBounds(172, 338, 104, 25);
+		panel_7.add(btnLive);
 
 		JLabel lblNewLabel_2_3 = new JLabel("Set Routien Parameters to create a Macro");
 		lblNewLabel_2_3.setBounds(449, 59, 198, 25);
@@ -961,6 +966,33 @@ public class ToroUI {
 				// textArea.repaint();
 			}
 		});
+		
+		uxValidationTimeOutMS1.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				//System.out.println("tfStepName : keyTyped : START");
+				try {
+				toro.rmRoutineManager.currentRoutine.currentStep.passAction.timeOutML = Long.parseLong(uxValidationTimeOutMS1.getText());
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+				//toro.rmRoutineManager.currentRoutine.currentStep.stepName = tfStepName.getText() + e.getKeyChar();
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 		btnEndScreenCapture.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -984,9 +1016,16 @@ public class ToroUI {
 		btnTogleStartStop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				toro.singleMacroTest.paused.set(!toro.singleMacroTest.paused.get());
-				if(toro.singleMacroTest.paused.get()) {
-					toro.singleMacroTestThread.notify();
-				}
+				//if(toro.singleMacroTest.paused.get()) {
+				//	toro.singleMacroTestThread.notify();
+				//}
+			
+			}
+		});
+		
+		btnLive.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				uxPhonePanel.liveClick = !uxPhonePanel.liveClick;
 			
 			}
 		});
@@ -1006,6 +1045,7 @@ public class ToroUI {
 			}
 		});
 
+		
 		createActionButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				uxPhonePanel.bCreateAction = true;

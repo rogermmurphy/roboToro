@@ -18,9 +18,10 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import roboToro.Toro;
+
 public class PhonePanel extends JPanel {
 
-	
 	 /**
 	 * 
 	 */
@@ -32,9 +33,10 @@ public class PhonePanel extends JPanel {
     public boolean bCreateAction;
     public String sCreatedAction;
     public ArrayList<Point> alPoint;
+    public boolean liveClick;
 
      public PhonePanel() throws AWTException{
-    	
+    	 liveClick = false;
     	 bScreenCapture = false;
     	 bCreateAction = false;
     	 sCreatedAction = "";
@@ -63,6 +65,38 @@ public class PhonePanel extends JPanel {
             	 actionClickPoint = e.getPoint();
             	 alPoint.add(actionClickPoint);
             	 sCreatedAction += "<CLICK><LOCATION x=\"" + actionClickPoint.x + "\" y=\"" + actionClickPoint.y  + "\" ></LOCATION></CLICK>";
+            	 if(liveClick) {
+            		 String upClick = "G01 ";// X45 Y98 Z-340.5 W0";
+         			String downClick = "G01 ";
+         			long x = (long) Math.round(actionClickPoint.x * Toro.ACTUAL_PIXEL_WIDTH);
+         			long y = (long) Toro.DIVICE_HEIGTH_MM - Math.round(actionClickPoint.y * Toro.ACTUAL_PIXEL_WIDTH);
+         			//x += Math.random()*2; //% Toro.xVAR;
+         			//x -= Math.random()*2;// % Toro.xVAR;
+         		//	y += Math.random() % Toro.yVAR;
+         		//	y += x += Math.random() % Toro.yVAR;
+
+         			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP;
+         			
+         			
+         			
+         			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN;
+         			try {
+         			System.out.println(upClick);
+        			System.out.println(downClick);
+        			Toro.comClient.sendCommand("M205 S3000");
+        			Thread.sleep(20);
+        			Toro.comClient.sendCommand(upClick);
+        			Toro.comClient.sendCommand("M205 S300");
+        			Toro.comClient.sendCommand(downClick);
+        			
+        			
+        				Thread.sleep(10);
+        			} catch (InterruptedException ex) {
+        				// TODO Auto-generated catch block
+        				ex.printStackTrace();
+        			}
+        			Toro.comClient.sendCommand(upClick);
+            	 }
  						//actionClickPoint.x +</LOCATION></CLICK>");
                  repaint();
              }

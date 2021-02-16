@@ -49,7 +49,14 @@ public class Step {
 	
 	public double Validate(BufferedImage img1) {
 	//	System.out.println(subImageLocation.x + " " + subImageLocation.y + " " +  subImageLocation.width + " " + subImageLocation.height);
-		return FixedUtil.compaireImage(img1.getSubimage(subImageLocation.x, subImageLocation.y, subImageLocation.width, subImageLocation.height), image);
+		try {
+			return FixedUtil.compaireImage(img1.getSubimage(subImageLocation.x, subImageLocation.y, subImageLocation.width, subImageLocation.height), image);
+		}catch (Exception ex) {
+			//System.out.println("error in recorded step: " + this.stepName);
+			return 100.1;
+		}
+		
+		
 	}
 	
 	public Element toXML() throws ParserConfigurationException {
@@ -139,46 +146,62 @@ public class Step {
 	public boolean execute() {
 		// TODO Auto-generated method stub
 		//System.out.println("passAction.noValidation: " + passAction.noValidation);
-		//if(passAction.noValidation) {
-		//	passAction.sendGCode();
-		//	return true;
-		//}
-		if(this.Validate(PhonePanel.image) == 0) {
-			while(this.Validate(PhonePanel.image) == 0) {
-				//repeat click sometimes you have to click 3 or 4 times
-				System.out.println("Execution True Step: " + this.stepName);
-				//Toro.comClient.sendCommand(null)
-				passAction.sendGCode();
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
+		if(passAction.noValidation) {
+			passAction.sendGCode();
 			return true;
 		}
 		if(this.Validate(PhonePanel.image) < .8) {
 			while(this.Validate(PhonePanel.image) < .8) {
 				//repeat click sometimes you have to click 3 or 4 times
-				System.out.println("Almost Match True Step: " + this.stepName);
+				System.out.println("Sending GCode Step: " + this.stepName);
 				//Toro.comClient.sendCommand(null)
 				passAction.sendGCode();
 				try {
+					
 					Thread.sleep(500);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				if(Toro.RUN_LENEAR)
+					return true;
 			}
 			return true;
 		}
 
-		
-	
 			return false;
 		
 	}
+	
+	public boolean executeWithPause(long ms) {
+		// TODO Auto-generated method stub
+		//System.out.println("passAction.noValidation: " + passAction.noValidation);
+		if(passAction.noValidation) {
+			passAction.sendGCodeWithPause(1200);
+			return true;
+		}
+		if(this.Validate(PhonePanel.image) < .8) {
+			while(this.Validate(PhonePanel.image) < .8) {
+				//repeat click sometimes you have to click 3 or 4 times
+				System.out.println("Sending GCode Step: " + this.stepName);
+				//Toro.comClient.sendCommand(null)
+				passAction.sendGCodeWithPause(1200);
+				try {
+					
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				if(Toro.RUN_LENEAR)
+					return true;
+			}
+			return true;
+		}
+
+			return false;
+		
+	}
+
 
 }
