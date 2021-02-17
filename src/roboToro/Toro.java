@@ -122,7 +122,7 @@ public class Toro {
 	// public static String DELTA_Z_CORD_DOWN = "-370.5";
 	// public static String DELTA_Z_CORD_UP = "-330";
 	public static String DELTA_Z_CORD_DOWN = "-332";
-	public static String DELTA_Z_CORD_UP = "-312";
+	public static String DELTA_Z_CORD_UP = "-315";
 	public static boolean RUN_LENEAR = true;
 	// Connections
 	public static GCodeComClient comClient;
