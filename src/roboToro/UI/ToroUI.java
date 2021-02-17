@@ -59,7 +59,7 @@ public class ToroUI {
 
 	public static Toro toro;
 	private static FixedUtil fixedUtil;
-	private JFrame frame;
+	public JFrame frame;
 	private PhonePanel uxPhonePanel;
 	private JTextField uxValidationTimeOutMS1;
 	private JTextField textField_2;

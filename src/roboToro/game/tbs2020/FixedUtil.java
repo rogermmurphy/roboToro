@@ -57,7 +57,7 @@ public class FixedUtil {
 	public Robot robot;
 	public WindowInfo windowInfo;
 	private boolean lookforwindoweverytime;
-	public static String windowName = "Reflector 3 - iPhone";
+	public static String windowName = "Reflector 3 - Roger’s iPhone";
 
 	public FixedUtil() {
 		isRecord = false;
@@ -100,9 +100,14 @@ ex.printStackTrace();
 			int hWnd = User32.instance.FindWindowA(null, windowName);
 			// get window info
 			windowInfo = getWindowInfo(hWnd);
+			
 		}
 		try {
-
+			/*
+			 * System.out.println(windowInfo.rect.left + " " + windowInfo.rect.top + " " +
+			 * (windowInfo.rect.right - windowInfo.rect.left) + " " +
+			 * (windowInfo.rect.bottom - windowInfo.rect.top));
+			 */
 			fScreateScreenCapture = robot.createScreenCapture(new Rectangle(windowInfo.rect.left, windowInfo.rect.top,
 					windowInfo.rect.right - windowInfo.rect.left, windowInfo.rect.bottom - windowInfo.rect.top));
 
@@ -150,6 +155,7 @@ ex.printStackTrace();
 					bShowLiveScreen = false;
 					System.out.println("UX window is not found Runing UX Fix Scropt");
 				}
+			//	uxImagePanel.image.getHeight();
 				uxImagePanel.image = this.fScreateScreenCapture;
 				// uxImagePanel.removeAll();
 				// uxImagePanel.add(screenLabel);

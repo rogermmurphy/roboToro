@@ -26,10 +26,10 @@ public class TapSettingsModel implements GenericToroModel {
 		// TODO Auto-generated constructor stub
 		lDeviceWidth = 1284.0 / 458.0; // / 25.4; //PX/inch 1.inch/25.4MM
 		lDeviceHeight = 2778.0 / 458.0; // / 25.4;
-		lImageNumberOfPXWidth = 653.0;
-		lImageNumberOfPXHeight = 1400.0;
-		dScreenWidthCM = lDeviceWidth * 25.4;
-		dScreenHeightCM = lDeviceHeight * 25.4;
+		lImageNumberOfPXWidth = 563.0;
+		lImageNumberOfPXHeight = 1263.0;
+		dScreenWidthCM = 78.1;
+		dScreenHeightCM = 166.0;//160.8;
 		lCalculatedPXWidth = dScreenWidthCM / lImageNumberOfPXWidth;
 		lCalculatedPXHeight = dScreenHeightCM / lImageNumberOfPXHeight;
 	}
