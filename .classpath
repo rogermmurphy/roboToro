@@ -101,5 +101,7 @@
 	<classpathentry kind="lib" path="lib/commons-io-2.8.0/commons-net-3.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.8.0/commons-net-3.7.2-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.8.0/commons-net-examples-3.7.2.jar"/>
+	<classpathentry kind="lib" path="jgoodies-common-1.8.0.jar" sourcepath="jgoodies-common-1.8.0-sources.jar"/>
+	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

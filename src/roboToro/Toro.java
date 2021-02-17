@@ -97,7 +97,7 @@ public class Toro {
 
 	// variables
 //	public Device deviceType;
-	public String windowName = "Reflector 3 - iPhone";
+	public String windowName = "Reflector 3 - Roger’s iPhone";
 	// public ArrayLiat al
 	// public static String windowName = "Document - WordPad";
 
@@ -106,22 +106,23 @@ public class Toro {
 	// public ToroUtils toroUtils;
 
 	// divice settings
-	public static double DIVICE_WIDTH_MM = 77.9 + 8;
-	public static double DIVICE_HEIGTH_MM = 158.2 + 4;
+	public static double DIVICE_WIDTH_MM = 78.1;
+	public static double DIVICE_HEIGTH_MM = 166.0;//160.8;//154.06;
 
 	public static double MAX_WIDTH__PIXEL = 543;
 	public static double MAX_HEIGHT_PIXEL = 1104;
 
 	// this needs some work but there are ~30 added px to width and height
-	public static double ACTUAL_PIXEL_WIDTH = .145;// .1438;
-	public static double ACTUAL_PIXEL_HEIGHT = .145;
+	public static double ACTUAL_PIXEL_WIDTH = .13872113676731793; //.145;// .1438;
+	public static double ACTUAL_PIXEL_HEIGHT = 0.13143309580364212;// .12198; //.145;
+	
 	// .26458333
 	// 3.7795275591 px in a mm
 
 	// public static String DELTA_Z_CORD_DOWN = "-370.5";
 	// public static String DELTA_Z_CORD_UP = "-330";
-	public static String DELTA_Z_CORD_DOWN = "-330";
-	public static String DELTA_Z_CORD_UP = "-320";
+	public static String DELTA_Z_CORD_DOWN = "-332";
+	public static String DELTA_Z_CORD_UP = "-312";
 	public static boolean RUN_LENEAR = true;
 	// Connections
 	public static GCodeComClient comClient;
