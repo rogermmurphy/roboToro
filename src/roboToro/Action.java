@@ -41,11 +41,12 @@ public class Action {
 			String upClick = "G01 ";// X45 Y98 Z-340.5 W0";
 			String downClick = "G01 ";
 			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH);
+			//+(p.x*20/70)
 			long y = (long) Math.round(Toro.DIVICE_HEIGTH_MM - (p.y * Toro.ACTUAL_PIXEL_HEIGHT));
 			x += Math.random()*2; //% Toro.xVAR;
 			x -= Math.random()*2;// % Toro.xVAR;
 		//	y += Math.random() % Toro.yVAR;
-		//	y += x += Math.random() % Toro.yVAR;
+			y = y - (x*5/70) - 5;
 
 			upClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_UP + " W0";
 			downClick += "X" + x + " Y" + y + " Z" + Toro.DELTA_Z_CORD_DOWN + " W0";
@@ -54,10 +55,10 @@ public class Action {
 			System.out.println(downClick);
 			Toro.comClient.sendCommand("M205 S3000");
 			Toro.comClient.sendCommand(upClick);
-			Thread.sleep(30);
+			Thread.sleep(100);
 			Toro.comClient.sendCommand("M205 S300");
 			Toro.comClient.sendCommand(downClick);
-			Thread.sleep(10);
+			Thread.sleep(100); //this needs to be ~equal to the lag in screen relay
 			
 			
 				
