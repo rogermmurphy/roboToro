@@ -60,15 +60,15 @@ public class CalibrationSettingsView extends JPanel {
 		textField_3.setBounds(120, 67, 100, 20);
 		add(textField_3);
 		
-		ClickSettingsView panel_2 = new ClickSettingsView("Click Up");
+		CommandSettingsView panel_2 = new CommandSettingsView("Click Up");
 		panel_2.setBounds(0, 160, 251, 145);
 		add(panel_2);
 		
-		ClickSettingsView panel_2_1 = new ClickSettingsView("Click Down");
+		CommandSettingsView panel_2_1 = new CommandSettingsView("Click Down");
 		panel_2_1.setBounds(0, 316, 251, 145);
 		add(panel_2_1);
 		
-		ClickSettingsView panel_2_1_1 = new ClickSettingsView("Click Up");
+		CommandSettingsView panel_2_1_1 = new CommandSettingsView("Click Up");
 		panel_2_1_1.setBounds(0, 472, 251, 145);
 		add(panel_2_1_1);
 		

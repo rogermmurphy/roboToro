@@ -12,14 +12,14 @@ public class TapSettingsModel implements GenericToroModel {
 	// viewport
 	// Width = (1248 / 458) *25.4
 	// Height = (2778 / 458) * 25.4
-	private double lDeviceWidth;// = (1284 / 458); // / 25.4; //PX/inch 1.inch/25.4MM
-	private double lDeviceHeight;// = (2778 / 458); // / 25.4;
-	private double lImageNumberOfPXWidth;// = 653;
-	private double lImageNumberOfPXHeight;// = 1400;
-	private double dScreenWidthCM;// = lDeviceWidth *25.4;
-	private double dScreenHeightCM;// = lDeviceHeight *25.4;
-	private double lCalculatedPXWidth;// = dScreenWidthCM / lImageNumberOfPXWidth;
-	private double lCalculatedPXHeight;// = dScreenHeightCM / lImageNumberOfPXHeight;
+	public double lDeviceWidth;// = (1284 / 458); // / 25.4; //PX/inch 1.inch/25.4MM
+	public double lDeviceHeight;// = (2778 / 458); // / 25.4;
+	public double lImageNumberOfPXWidth;// = 653;
+	public double lImageNumberOfPXHeight;// = 1400;
+	public double dScreenWidthCM;// = lDeviceWidth *25.4;
+	public double dScreenHeightCM;// = lDeviceHeight *25.4;
+	public double lCalculatedPXWidth;// = dScreenWidthCM / lImageNumberOfPXWidth;
+	public double lCalculatedPXHeight;// = dScreenHeightCM / lImageNumberOfPXHeight;
 
 	public TapSettingsModel() {
 		super();

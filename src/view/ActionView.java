@@ -6,7 +6,7 @@ package view;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ActionView extends ClickSettingsView {
+public class ActionView extends CommandSettingsView {
 	private JTextField textField;
 
 	/**

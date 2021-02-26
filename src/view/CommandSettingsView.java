@@ -12,7 +12,7 @@ import java.awt.Panel;
 import java.awt.Label;
 
 
-public class ClickSettingsView extends JPanel {
+public class CommandSettingsView extends JPanel {
 	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_4;
@@ -21,7 +21,7 @@ public class ClickSettingsView extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ClickSettingsView(String labelText) {
+	public CommandSettingsView(String labelText) {
 		setLayout(null);
 		
 		Panel panel = new Panel();

@@ -2,11 +2,11 @@ package roboToro.model;
 
 public class CalibrationSettingsModel {
 	
-	private static long ZDOWN_DEFAULT = -200;
-	private static long ZUP_DEFAULT = -200;
-	private static long STARTING_VELOCITY_DEFAULT = 600;
-	private static long ACCELERATION_DEFAULT = 400;
-	private static long PAUSE_DEFAULT = 100;
+	public static long ZDOWN_DEFAULT = -200;
+	public static long ZUP_DEFAULT = -200;
+	public static long STARTING_VELOCITY_DEFAULT = 600;
+	public static long ACCELERATION_DEFAULT = 400;
+	public static long PAUSE_DEFAULT = 100;
 			
 	private long lZdown;
 	private long lZup;
@@ -14,25 +14,25 @@ public class CalibrationSettingsModel {
 	private long lAcceleration;
 	private long lPause;
 
-	private ClickModel cmClickUpStart;
+	private CommandModel cmClickUpStart;
 
-	private ClickModel cmClickDown;
+	private CommandModel cmClickDown;
 
-	private ClickModel cmClickUpEnd;
+	private CommandModel cmClickUpEnd;
 
 	public CalibrationSettingsModel() {
 		super();
 	}
 
-	public synchronized final ClickModel getCmClickDown() {
+	public synchronized final CommandModel getCmClickDown() {
 		return cmClickDown;
 	}
 
-	public synchronized final ClickModel getCmClickUpEnd() {
+	public synchronized final CommandModel getCmClickUpEnd() {
 		return cmClickUpEnd;
 	}
 
-	public synchronized final ClickModel getCmClickUpStart() {
+	public synchronized final CommandModel getCmClickUpStart() {
 		return cmClickUpStart;
 	}
 
@@ -56,15 +56,15 @@ public class CalibrationSettingsModel {
 		return lZup;
 	}
 
-	public synchronized final void setCmClickDown(ClickModel cmClickDown) {
+	public synchronized final void setCmClickDown(CommandModel cmClickDown) {
 		this.cmClickDown = cmClickDown;
 	}
 
-	public synchronized final void setCmClickUpEnd(ClickModel cmClickUpEnd) {
+	public synchronized final void setCmClickUpEnd(CommandModel cmClickUpEnd) {
 		this.cmClickUpEnd = cmClickUpEnd;
 	}
 
-	public synchronized final void setCmClickUpStart(ClickModel cmClickUpStart) {
+	public synchronized final void setCmClickUpStart(CommandModel cmClickUpStart) {
 		this.cmClickUpStart = cmClickUpStart;
 	}
 
