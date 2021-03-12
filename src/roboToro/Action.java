@@ -40,9 +40,9 @@ public class Action {
 			Point p = this.alPointList.get(i);
 			String upClick = "G01 ";// X45 Y98 Z-340.5 W0";
 			String downClick = "G01 ";
-			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH);
+			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH) - 3;
 			//+(p.x*20/70)
-			long y = (long) Math.round(Toro.DIVICE_HEIGTH_MM - (p.y * Toro.ACTUAL_PIXEL_HEIGHT));
+			long y = (long) Math.round(Toro.DIVICE_HEIGTH_MM + 7 - (p.y * Toro.ACTUAL_PIXEL_HEIGHT));
 			x += Math.random()*2; //% Toro.xVAR;
 			x -= Math.random()*2;// % Toro.xVAR;
 		//	y += Math.random() % Toro.yVAR;
@@ -90,7 +90,7 @@ public class Action {
 			Point p = this.alPointList.get(i);
 			String upClick = "G01 ";// X45 Y98 Z-340.5 W0";
 			String downClick = "G01 ";
-			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH);
+			long x = (long) Math.round(p.x * Toro.ACTUAL_PIXEL_WIDTH) - 10;
 			long y = (long) Toro.DIVICE_HEIGTH_MM - Math.round(p.y * Toro.ACTUAL_PIXEL_WIDTH);
 			x += Math.random()*2; //% Toro.xVAR;
 			x -= Math.random()*2;// % Toro.xVAR;

@@ -150,8 +150,8 @@ public class Step {
 			passAction.sendGCode();
 			return true;
 		}
-		if(this.Validate(PhonePanel.image) < .8) {
-			while(this.Validate(PhonePanel.image) < .8) {
+		if(this.Validate(PhonePanel.image) < .3) {
+			//while(this.Validate(PhonePanel.image) < .8) {
 				//repeat click sometimes you have to click 3 or 4 times
 				System.out.println("Sending GCode Step: " + this.stepName);
 				//Toro.comClient.sendCommand(null)
@@ -166,8 +166,8 @@ public class Step {
 				if(Toro.RUN_LENEAR)
 					return true;
 			}
-			return true;
-		}
+	//		return true;
+	//	}
 
 			return false;
 		
